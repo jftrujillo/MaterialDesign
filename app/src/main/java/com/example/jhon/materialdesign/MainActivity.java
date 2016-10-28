@@ -1,5 +1,6 @@
 package com.example.jhon.materialdesign;
 
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btn;
     TextInputLayout email;
     TextInputLayout pass;
-    LinearLayout linearLayout;
+    CoordinatorLayout coordinatorLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn = (Button) findViewById(R.id.btn);
         email = (TextInputLayout) findViewById(R.id.email);
         pass = (TextInputLayout) findViewById(R.id.pass);
-        linearLayout = (LinearLayout) findViewById(R.id.linear_layout);
+        //linearLayout = (LinearLayout) findViewById(R.id.linear_layout);
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
         btn.setOnClickListener(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Bienvenido");
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
                 else {
-                    Snackbar snackbar = Snackbar.make(linearLayout,"Campos invalidos, por favor revisar",Snackbar.LENGTH_INDEFINITE);
+                    Snackbar snackbar = Snackbar.make(coordinatorLayout,"Campos invalidos, por favor revisar",Snackbar.LENGTH_INDEFINITE);
                     snackbar.setAction("Aceptar", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
