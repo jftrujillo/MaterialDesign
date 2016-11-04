@@ -71,6 +71,10 @@ public class Postre {
         data.add(postre);
         data.add(postre2);
         data.add(postre3);
+        data.add(postre);
+        data.add(postre);
+        data.add(postre2);
+        data.add(postre3);
         return data;
     }
 }
