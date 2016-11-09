@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.jhon.materialdesign.Adapters.PostresRecylerAdapter;
+import com.example.jhon.materialdesign.interfaces.RecyclerInterface;
 import com.example.jhon.materialdesign.model.Postre;
 
-public class RecyclerView extends AppCompatActivity {
+public class RecyclerView extends AppCompatActivity implements RecyclerInterface {
     Toolbar toolbar;
     android.support.v7.widget.RecyclerView recyclerView;
     android.support.v7.widget.RecyclerView.Adapter adapter;
@@ -32,7 +34,7 @@ public class RecyclerView extends AppCompatActivity {
 
         colapse.setTitle("RecyclerView");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        adapter = new PostresRecylerAdapter(Postre.initPostres(),this);
+        adapter = new PostresRecylerAdapter(Postre.initPostres(),this,this);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -46,5 +48,10 @@ public class RecyclerView extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void OnItemRecyclerClickListener(int pos, Postre postre) {
+        Toast.makeText(this, "presiono" + pos + postre.getNomnbre(), Toast.LENGTH_SHORT).show();
     }
 }

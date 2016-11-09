@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jhon.materialdesign.R;
+import com.example.jhon.materialdesign.interfaces.RecyclerInterface;
 import com.example.jhon.materialdesign.model.Postre;
 import com.squareup.picasso.Picasso;
 
@@ -21,10 +22,11 @@ import java.util.List;
 public class PostresRecylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<Postre> data;
     Context context;
-
-    public PostresRecylerAdapter(List<Postre> data, Context context) {
+    RecyclerInterface recyclerInterface;
+    public PostresRecylerAdapter(List<Postre> data, Context context,RecyclerInterface recyclerInterface) {
         this.data = data;
         this.context = context;
+        this.recyclerInterface = recyclerInterface;
     }
 
     @Override
@@ -42,6 +44,7 @@ public class PostresRecylerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         viewholder.ingredientes.setText(data.get(position).getIngredientes());
         viewholder.precio.setText(data.get(position).getPrecion());
         Picasso.with(context).load(data.get(position).getImgUrl()).into(viewholder.imagen);
+        viewholder.setInterface(recyclerInterface,position,data.get(position));
     }
 
     @Override
@@ -59,6 +62,15 @@ public class PostresRecylerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             nombre = (TextView) itemView.findViewById(R.id.nombre);
             precio = (TextView) itemView.findViewById(R.id.precio);
             ingredientes = (TextView) itemView.findViewById(R.id.ingredientes);
+        }
+
+        public void setInterface(final RecyclerInterface recyclerInterface,final int pos, final Postre postre){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    recyclerInterface.OnItemRecyclerClickListener(pos,postre);
+                }
+            });
         }
     }
 
