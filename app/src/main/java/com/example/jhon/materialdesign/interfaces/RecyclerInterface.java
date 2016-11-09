@@ -8,4 +8,6 @@ import com.example.jhon.materialdesign.model.Postre;
 
 public interface RecyclerInterface {
     void OnItemRecyclerClickListener(int pos, Postre postre);
+    void OnImageRecyclerClickListener(int pos, String urlImg);
+    void OnLongRecyclerClickListener(int pos);
 }

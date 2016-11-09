@@ -71,6 +71,20 @@ public class PostresRecylerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     recyclerInterface.OnItemRecyclerClickListener(pos,postre);
                 }
             });
+            imagen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    recyclerInterface.OnImageRecyclerClickListener(pos,postre.getImgUrl());
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    recyclerInterface.OnLongRecyclerClickListener(pos);
+                    return true;
+                }
+            });
         }
     }
 

@@ -54,4 +54,14 @@ public class RecyclerView extends AppCompatActivity implements RecyclerInterface
     public void OnItemRecyclerClickListener(int pos, Postre postre) {
         Toast.makeText(this, "presiono" + pos + postre.getNomnbre(), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void OnImageRecyclerClickListener(int pos, String urlImg) {
+
+    }
+
+    @Override
+    public void OnLongRecyclerClickListener(int pos) {
+
+    }
 }
